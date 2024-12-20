@@ -21,12 +21,16 @@ def delete_induct_folder(directory):
     induct_path = os.path.join(directory, 'hashcat.induct')
     if os.path.isfile(induct_path):
         try:
+            print(f"Setting permissions for induct file: {induct_path}")
+            set_permissions(induct_path)
             os.remove(induct_path)
             print(f"Deleted induct file: {induct_path}")
         except Exception as e:
             print(f"Error deleting induct file: {e}")
     elif os.path.isdir(induct_path):
         try:
+            print(f"Setting permissions for induct folder: {induct_path}")
+            set_permissions(induct_path)
             shutil.rmtree(induct_path)
             print(f"Deleted induct folder: {induct_path}")
         except Exception as e:
